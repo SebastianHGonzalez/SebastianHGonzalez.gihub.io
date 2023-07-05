@@ -273,23 +273,34 @@
             right: 1em;
         }
 
-        #dark-mode-toggle:not(:checked)~#light {
+        #dark-mode-toggle~#light {
             display: unset;
         }
+        #dark-mode-toggle~#dark {
+            display: none;
+        }
 
+        #dark-mode-toggle:checked~#light {
+            display: none;
+        }
         #dark-mode-toggle:checked~#dark {
             display: unset;
         }
 
         @media (prefers-color-scheme: dark) {
+            #dark-mode-toggle~#light {
+                display: none;
+            }
+            #dark-mode-toggle~#dark {
+                display: unset;
+            }
+            
             #dark-mode-toggle:checked~#light {
                 display: unset;
             }
-
-            #dark-mode-toggle:not(:checked)~#dark {
-                display: unset;
+            #dark-mode-toggle:checked~#dark {
+                display: none;
             }
-
         }
 
         @supports selector(:has(*)) {
